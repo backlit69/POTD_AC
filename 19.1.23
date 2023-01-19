@@ -1,0 +1,35 @@
+//Name-Saket Kumar
+//question link  - https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences/discussion/?fbclid=IwAR3pXLuNtPv9IIN4C3zVRFDO92e2QyCmZzCAxmENthvdi-wKfBWrAaqtO1E
+//Time Complexity -O(N);
+
+
+class Solution {
+public:
+    bool areOccurrencesEqual(string s) {
+        int arr[27]={0};
+        int max=0;
+        for(int i=0;s[i]!='\0';i++){
+            arr[(int)s[i]-97]++;
+            if(arr[(int)s[i]-97]>max){
+                max=arr[(int)s[i]-97];
+            }
+        }
+        int flag=0;
+        for(int i=0;i<27;i++){
+            if(arr[i]==max || arr[i]==0){
+                continue;
+            }
+            else{
+                flag=1;
+                break;
+            }
+        }
+
+        if(flag==1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+};

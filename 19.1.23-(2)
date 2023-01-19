@@ -1,0 +1,34 @@
+//Name-Saket Kumar
+//link to Question - https://leetcode.com/problems/increasing-decreasing-string/solutions/?fbclid=IwAR2Ux03Pa8-aIk7zliXygaHxpjRooDxguleFSkXLN7JEudZl-BnKS9Ufuzo
+//time Complexity - O(N);
+
+class Solution {
+public:
+    string sortString(string s) {
+       int arr[28]={0};
+       string ans="";
+       int sum=0;
+       for(int i=0;s[i]!='\0';i++){
+           arr[s[i]-97]++;
+           sum+=1;
+       }
+       while(sum>0){
+          for(int i=0;i<27;i++){
+              if(arr[i]!=0){
+                 ans+=(char)i+97; 
+                 sum--;
+                 arr[i]--;
+              }
+          } 
+          for(int i=26;i>=0;i--){
+              if(arr[i]!=0){
+                 ans+=(char)i+97;
+                 arr[i]--; 
+                 sum--;
+              }
+          }
+       }
+       return ans;
+
+    }
+};

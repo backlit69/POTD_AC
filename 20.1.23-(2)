@@ -1,0 +1,40 @@
+// link to the question - https://codeforces.com/contest/17/submission/189820923
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+// int T;
+// cin>>T;
+// while(T--){
+// }
+int m,k,count=0,count_sum=0;
+cin>>m>>k;
+int arr[m+1]={0},prime[m];
+
+for(int i=2;i<=m;i++){
+    if(arr[i]==0){
+        for(int j=i+i;j<=m;j+=i){
+            arr[j]=1;
+        }
+        prime[count++]=i;
+    }
+}
+// for(int i=0;i<count;i++){
+//     cout<<prime[i]<<" ";
+// }
+// cout<<endl;
+for(int i=0;i<count-1;i++){
+    //cout<<" "<<i<<endl;
+    if( prime[i]+prime[i+1]+1<=m  && arr[prime[i]+prime[i+1]+1]==0  ){
+       //cout<<"\ngot it\n"<<prime[i]<<" "<<prime[i+1];
+        count_sum++;
+    }
+}
+if(count_sum>=k){
+    cout<<"YES";
+}
+else{
+    cout<<"NO";
+}
+
+}

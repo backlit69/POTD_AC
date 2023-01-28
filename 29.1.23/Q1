@@ -1,0 +1,24 @@
+// link - https://leetcode.com/problems/reverse-words-in-a-string-iii/submissions/887002298/?fbclid=IwAR3ByCYkKtcue9VzX_A41gk3EtUl0s1COtwJRFsrN9HyiehtZCd5SVci8T4
+
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        string ans="";
+        int prev=0,i;
+        for(i=0;s[i]!='\0';i++){
+            if(s[i]==' '){
+                for(int j=i-1;j>=prev;j--){
+                    ans+=s[j];
+                }
+                prev=i+1;
+                ans+=' ';
+            }
+        
+        }
+        for(int j=i-1;j>=prev;j--){
+                    ans+=s[j];
+                }
+        return ans;
+    }
+};

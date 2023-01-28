@@ -1,0 +1,22 @@
+// link - https://practice.geeksforgeeks.org/problems/modified-numbers-and-queries0904/1?fbclid=IwAR2N6mL-DEQ_kkYAnCW0ZmBdmMFCgtoX-m9sc4xYGM_zSdWfT6ueYU-tjrg
+
+
+class Solution {
+  public:
+  int t[10000]={0};
+    int sumOfAll(int l, int r){
+        
+        for(int i=2;i<=r;i++){
+            if(t[i]==0)
+            for(int j=i;j<=r;j+=i){
+                t[j]+=i;
+            }
+        }
+        int sum=0;
+        for(int i=l;i<=r;i++){
+            sum+=t[i];
+            //cout<<t[i]<<" ";
+        }
+        return sum;
+    }
+};

@@ -1,0 +1,47 @@
+//link - https://leetcode.com/problems/prime-arrangements/submissions/887995945/?fbclid=IwAR082WGjkZzW6_IDAtXtmyKJezcW3f_gf76gXsCjeofBy4u25P7GSKHxbo0
+
+
+class Solution {
+public:
+    int t[101];
+    void sieve(){
+        for(int i=0;i<100;i++,t[i]=0);
+        t[0]=1;
+        t[1]=1;
+        t[100]=1;
+        for(int i=2;i<=100;i++){
+            if(t[i]==0){
+                for(int j=i+i;j<=100;j+=i){
+                    t[j]=1;
+                }
+            }
+        }
+        for(int i=1;i<10;i++){
+            cout<<t[i]<<" ";
+        }
+        int sum=0;
+        for(int i=0;i<101;i++){
+            if(t[i]==0){
+                sum++;
+            }
+            t[i]=sum;
+        }
+    }
+    int numPrimeArrangements(int n) {
+        sieve();
+        int p=t[n];
+        cout<<p;
+        int c=n-p;
+        long m=1000000007;
+        long long ans=1;
+        int max = std::max(p,c);
+        int min = std::min(p,c);
+        for(int i=1;i<=max;i++){
+            ans = (ans%m *i%m)%m;
+            if(i==min){
+                ans = (ans%m * ans%m)%m;
+            }
+        }
+        return ans%m;
+    }
+};

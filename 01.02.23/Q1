@@ -1,0 +1,21 @@
+//link -  https://leetcode.com/problems/find-the-duplicate-number/description/
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+       int meet=-1;
+       int fast=0,slow=0;
+       do{
+           slow=nums[slow];
+           fast=nums[nums[fast]];   
+       }while(slow!=fast);
+       slow=0;
+       do{
+           slow=nums[slow];
+           fast=nums[fast];
+       }while(slow!=fast);
+       cout<<slow<<" "<<fast;
+       return slow;
+    }
+};
